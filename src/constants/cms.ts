@@ -6,6 +6,10 @@ export const BLOG_GROUP = "blogs";
 
 export const BLOG_PATH = "/blogs";
 
+export const BLOG_FEED_PATH = "/blogs/feed.xml";
+
+export const BLOG_DESCRIPTION = "Notes on front-end engineering, performance and the products I build.";
+
 export const WORDS_PER_MINUTE = 225;
 
 export const RELATED_POST_LIMIT = 3;

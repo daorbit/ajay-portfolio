@@ -1,17 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { NAV_LINKS, isActivePath } from "@/constants/navigation";
 import { padIndex } from "@/lib/format";
+import WithPathname from "@/components/layout/WithPathname";
 
 type MenuLinksProps = {
   onNavigate: () => void;
 };
 
-export default function MenuLinks({ onNavigate }: MenuLinksProps) {
-  const pathname = usePathname();
+type MenuLinkListProps = MenuLinksProps & {
+  pathname: string | null;
+};
 
+function MenuLinkList({ pathname, onNavigate }: MenuLinkListProps) {
   return (
     <ul className="w-full">
       {NAV_LINKS.map(({ label, href }, index) => {
@@ -33,4 +35,8 @@ export default function MenuLinks({ onNavigate }: MenuLinksProps) {
       })}
     </ul>
   );
+}
+
+export default function MenuLinks({ onNavigate }: MenuLinksProps) {
+  return <WithPathname render={(pathname) => <MenuLinkList pathname={pathname} onNavigate={onNavigate} />} />;
 }

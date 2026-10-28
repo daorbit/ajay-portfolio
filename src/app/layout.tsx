@@ -3,7 +3,9 @@ import { Bebas_Neue, Instrument_Serif, Inter } from "next/font/google";
 import SiteNav from "@/components/layout/SiteNav";
 import Footer from "@/components/layout/Footer";
 import QuantalogTracker from "@/components/analytics/QuantalogTracker";
+import { SITE_KEYWORDS, SITE_URL } from "@/constants/site";
 import { PROFILE } from "@/data/profile";
+import { FEED_ALTERNATES, OPEN_GRAPH_BASE, TWITTER_BASE, socialTitle } from "@/lib/seo";
 import { THEME_SCRIPT } from "@/lib/theme";
 import "da-frame-set/styles.css";
 import "./globals.css";
@@ -26,12 +28,45 @@ const instrument = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
+const DEFAULT_TITLE = socialTitle();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `${PROFILE.name} · ${PROFILE.role}`,
+    default: DEFAULT_TITLE,
     template: `%s · ${PROFILE.name}`,
   },
   description: PROFILE.summary,
+  applicationName: PROFILE.name,
+  authors: [{ name: PROFILE.name, url: SITE_URL }],
+  creator: PROFILE.name,
+  publisher: PROFILE.name,
+  keywords: SITE_KEYWORDS,
+  category: "technology",
+  alternates: { types: FEED_ALTERNATES },
+  openGraph: {
+    ...OPEN_GRAPH_BASE,
+    title: DEFAULT_TITLE,
+    description: PROFILE.summary,
+    url: "/",
+  },
+  twitter: {
+    ...TWITTER_BASE,
+    title: DEFAULT_TITLE,
+    description: PROFILE.summary,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { email: false, address: false, telephone: false },
 };
 
 export const viewport: Viewport = {

@@ -12,6 +12,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function isActivePath(pathname: string, href: string) {
+export function isActivePath(pathname: string | null, href: string) {
+  if (!pathname) return false;
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }

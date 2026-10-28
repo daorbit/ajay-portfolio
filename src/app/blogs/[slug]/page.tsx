@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getPost, postHref } from "@/lib/blog";
+import { pageMetadata } from "@/lib/seo";
 import PostArticle from "@/components/blog/PostArticle";
 import PostSkeleton from "@/components/blog/PostSkeleton";
 import "@/styles/prose.css";
@@ -8,31 +9,27 @@ import "@/styles/prose.css";
 export async function generateMetadata({ params }: PageProps<"/blogs/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
-  if (!post) return { title: "Post not found" };
+  if (!post) return { title: "Post not found", robots: { index: false, follow: false } };
 
-  const images = post.image.url ? [post.image.url] : undefined;
+  const path = postHref(post.slug);
+  const base = pageMetadata({ title: post.title, description: post.description, path });
+  const images = post.image.url ? [{ url: post.image.url, alt: post.image.alt || post.title }] : undefined;
 
   return {
-    title: post.title,
-    description: post.description,
-    alternates: { canonical: postHref(post.slug) },
+    ...base,
+    authors: [{ name: post.author }],
+    keywords: post.tags,
     ...(post.noIndex ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
+      ...base.openGraph,
       type: "article",
-      title: post.title,
-      description: post.description,
       publishedTime: post.date,
       modifiedTime: post.updated,
       authors: [post.author],
       tags: post.tags,
-      images,
+      ...(images ? { images } : {}),
     },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images,
-    },
+    twitter: { ...base.twitter, ...(images ? { images } : {}) },
   };
 }
 
