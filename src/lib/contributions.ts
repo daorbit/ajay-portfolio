@@ -1,4 +1,6 @@
+import { WEEKDAY_ORDER } from "@/constants/github";
 import type {
+  ChartDatum,
   ContributionDay,
   ContributionLevel,
   ContributionResponse,
@@ -8,6 +10,10 @@ import type {
 } from "@/types/github";
 
 const MONTH_FORMAT = new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" });
+const MONTH_YEAR_FORMAT = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" });
+const WEEKDAY_FORMAT = new Intl.DateTimeFormat("en", { weekday: "short", timeZone: "UTC" });
+const WEEKDAY_LONG_FORMAT = new Intl.DateTimeFormat("en", { weekday: "long", timeZone: "UTC" });
+const DAY_MS = 86_400_000;
 
 function toDate(date: string) {
   return new Date(`${date}T00:00:00Z`);
@@ -92,6 +98,35 @@ export function getMonthLabels(weeks: ContributionWeek[]): MonthLabel[] {
   });
 
   return labels;
+}
+
+export function getMonthlyTotals(days: ContributionDay[], months = 12): ChartDatum[] {
+  const totals = new Map<string, number>();
+  for (const { date, count } of days) {
+    const key = date.slice(0, 7);
+    totals.set(key, (totals.get(key) ?? 0) + count);
+  }
+
+  return [...totals.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .slice(-months)
+    .map(([key, value]) => {
+      const date = toDate(`${key}-01`);
+      return { label: MONTH_FORMAT.format(date), value, hint: MONTH_YEAR_FORMAT.format(date) };
+    });
+}
+
+export function getWeekdayTotals(days: ContributionDay[]): ChartDatum[] {
+  const totals = Array<number>(7).fill(0);
+  for (const { date, count } of days) {
+    totals[toDate(date).getUTCDay()] += count;
+  }
+
+  const reference = toDate("2023-01-01");
+  return WEEKDAY_ORDER.map((weekday) => {
+    const date = new Date(reference.getTime() + weekday * DAY_MS);
+    return { label: WEEKDAY_FORMAT.format(date), value: totals[weekday], hint: WEEKDAY_LONG_FORMAT.format(date) };
+  });
 }
 
 export function formatContributionDate(date: string) {

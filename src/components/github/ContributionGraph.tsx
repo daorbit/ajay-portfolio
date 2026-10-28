@@ -1,14 +1,7 @@
-import type { ContributionLevel, ContributionWeek, MonthLabel } from "@/types/github";
+import type { ContributionWeek, MonthLabel } from "@/types/github";
+import { HEAT_LEVEL_BG } from "@/constants/chart";
 import { formatContributionDate } from "@/lib/contributions";
 import { cn } from "@/lib/cn";
-
-const LEVEL_CLASSES: Record<ContributionLevel, string> = {
-  0: "bg-graph-empty",
-  1: "bg-accent/30",
-  2: "bg-accent/55",
-  3: "bg-accent/80",
-  4: "bg-accent",
-};
 
 type ContributionGraphProps = {
   weeks: ContributionWeek[];
@@ -18,45 +11,43 @@ type ContributionGraphProps = {
 
 export default function ContributionGraph({ weeks, months, total }: ContributionGraphProps) {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="overflow-x-auto pb-2">
-        <div role="img" aria-label={`${total} contributions in the last year`} className="inline-flex flex-col gap-2">
-          <div className="flex gap-1" aria-hidden>
+    <div className="flex flex-col gap-5">
+      <div className="-mx-1 overflow-x-auto px-1 pb-2">
+        <div role="img" aria-label={`${total} contributions in the last year`} className="min-w-[44rem]">
+          <div aria-hidden className="grid auto-cols-fr grid-flow-col gap-[3px]">
             {weeks.map((_, index) => {
               const month = months.find((item) => item.week === index);
               return (
-                <span key={index} className="type-label relative h-4 w-3 text-label-tertiary">
+                <span key={index} className="type-label relative h-5 text-label-tertiary">
                   {month && <span className="absolute left-0 whitespace-nowrap">{month.label}</span>}
                 </span>
               );
             })}
           </div>
-          <div className="flex gap-1" aria-hidden>
-            {weeks.map((week, weekIndex) => (
-              <div key={weekIndex} className="flex flex-col gap-1">
-                {week.map((day, dayIndex) =>
-                  day ? (
-                    <span
-                      key={day.date}
-                      title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${formatContributionDate(day.date)}`}
-                      className={cn(
-                        "size-3 rounded-[3px] transition-transform duration-200 ease-apple hover:scale-125 hover:ring-1 hover:ring-label/50",
-                        LEVEL_CLASSES[day.level],
-                      )}
-                    />
-                  ) : (
-                    <span key={`empty-${dayIndex}`} className="size-3" />
-                  ),
-                )}
-              </div>
-            ))}
+          <div aria-hidden className="mt-1 grid auto-cols-fr grid-flow-col grid-rows-7 gap-[3px]">
+            {weeks.flatMap((week, weekIndex) =>
+              week.map((day, dayIndex) =>
+                day ? (
+                  <span
+                    key={day.date}
+                    title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${formatContributionDate(day.date)}`}
+                    className={cn(
+                      "aspect-square rounded-[3px] transition-transform duration-200 ease-apple hover:scale-125 hover:ring-1 hover:ring-label/50",
+                      HEAT_LEVEL_BG[day.level],
+                    )}
+                  />
+                ) : (
+                  <span key={`empty-${weekIndex}-${dayIndex}`} className="aspect-square" />
+                ),
+              ),
+            )}
           </div>
         </div>
       </div>
-      <div className="type-label flex items-center gap-2 text-label-tertiary" aria-hidden>
+      <div aria-hidden className="type-label flex items-center gap-2 self-end text-label-tertiary">
         <span>Less</span>
-        {([0, 1, 2, 3, 4] as const).map((level) => (
-          <span key={level} className={cn("size-3 rounded-[3px]", LEVEL_CLASSES[level])} />
+        {HEAT_LEVEL_BG.map((level) => (
+          <span key={level} className={cn("size-3 rounded-[3px]", level)} />
         ))}
         <span>More</span>
       </div>
