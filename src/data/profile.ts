@@ -7,6 +7,7 @@ export const PROFILE: Profile = {
   email: "goswamiajay526@gmail.com",
   github: "ajjjugoswami",
   githubAccounts: ["ajjjugoswami", "daorbit"],
+  photo: "https://avatars.githubusercontent.com/u/114179076",
   summary:
     "Front-end developer with three years of experience designing and building fast, responsive, SEO-optimized web applications with React, Next.js and TypeScript.",
 };

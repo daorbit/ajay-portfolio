@@ -13,10 +13,10 @@ export default function Avatar({ size = "lg" }: AvatarProps) {
     return (
       <Image
         src={PROFILE.photo}
-        alt={PROFILE.name}
+        alt=""
         width={128}
         height={128}
-        className={cn("rounded-full object-cover ring-1 ring-hairline-strong", sizeClass)}
+        className={cn("shrink-0 rounded-full object-cover ring-1 ring-hairline-strong", sizeClass)}
       />
     );
   }
