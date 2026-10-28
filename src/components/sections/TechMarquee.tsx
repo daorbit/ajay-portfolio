@@ -1,27 +1,23 @@
 import { TOOLKIT_LOGOS } from "@/data/toolkit";
 import BrandLogo from "@/components/ui/BrandLogo";
 
-export default function TechMarquee() {
-  const loop = [...TOOLKIT_LOGOS, ...TOOLKIT_LOGOS];
+const COPIES = [0, 1];
 
+export default function TechMarquee() {
   return (
-    <section aria-label="Toolkit" className="border-t border-hairline bg-canvas py-12 md:py-16">
-      <p className="type-caption mb-8 text-center font-semibold text-label-tertiary">
-        The toolkit behind every build
-      </p>
-      <div className="mask-fade-x overflow-hidden">
-        <ul className="flex w-max animate-marquee items-center gap-14 hover:[animation-play-state:paused] md:gap-20">
-          {loop.map((logo, index) => (
-            <li
-              key={`${logo.title}-${index}`}
-              aria-hidden={index >= TOOLKIT_LOGOS.length}
-              className="flex items-center gap-3 text-label-tertiary transition-colors duration-300 ease-apple hover:text-label"
-            >
-              <BrandLogo logo={logo} className="size-7 md:size-8" />
-              <span className="type-subhead">{logo.title}</span>
-            </li>
-          ))}
-        </ul>
+    <section aria-label="Toolkit" className="overflow-hidden border-y border-hairline py-5 md:py-7">
+      <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+        {COPIES.map((copy) => (
+          <ul key={copy} aria-hidden={copy > 0} className="flex shrink-0 items-center">
+            {TOOLKIT_LOGOS.map((logo) => (
+              <li key={logo.title} className="type-poster-md flex items-center gap-[0.3em] pr-[0.6em]">
+                <BrandLogo logo={logo} className="size-[0.55em] text-label-tertiary" />
+                {logo.title}
+                <span aria-hidden className="ml-[0.6em] size-[0.12em] rounded-full bg-accent" />
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </section>
   );

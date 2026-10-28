@@ -1,38 +1,47 @@
+import { PROFILE } from "@/data/profile";
 import { RECOGNITION } from "@/data/recognition";
+import Avatar from "@/components/layout/Avatar";
+import HighlightStats from "@/components/sections/HighlightStats";
+import PosterList from "@/components/ui/PosterList";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
+import StatusDot from "@/components/ui/StatusDot";
 
 export default function About() {
   return (
     <Section
-      width="wide"
       headingLevel="h1"
-      eyebrow="About"
+      index="Index"
+      label="About"
       title={[{ text: "Design-minded." }, { text: "Detail-obsessed.", muted: true }]}
+      intro="I build fast, responsive interfaces with React, Next.js and TypeScript, with a focus on component architecture, server-side rendering and cross-browser performance."
     >
-      <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
-        <Reveal className="flex flex-col gap-6">
-          <p className="type-intro text-label">
-            I build fast, responsive interfaces with React, Next.js and TypeScript, with a focus on
-            component-based architecture, server-side rendering and cross-browser performance.
+      <div className="grid gap-16 border-t border-hairline pt-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+        <Reveal className="flex flex-col items-start gap-8">
+          <div className="flex items-center gap-4">
+            <Avatar />
+            <div>
+              <p className="type-label">{PROFILE.name}</p>
+              <p className="type-label text-label-tertiary">{PROFILE.role}</p>
+            </div>
+          </div>
+          <p className="type-intro text-label-secondary">
+            I work closely with design, backend and AI teams in agile environments, writing clean, maintainable code and
+            continuously improving page speed, usability and accessibility to ship polished, production-ready features.
           </p>
-          <p className="type-callout text-label-secondary">
-            I work closely with design, backend and AI teams in agile environments, writing clean,
-            maintainable code and continuously improving page speed, usability and accessibility to
-            ship polished, production-ready features.
-          </p>
+          <StatusDot />
         </Reveal>
-        <Reveal>
-          <h3 className="type-caption font-semibold text-label-tertiary">Education and recognition</h3>
-          <dl className="mt-4">
-            {RECOGNITION.map(({ title, detail }) => (
-              <div key={title} className="flex flex-col gap-1 border-t border-hairline py-5">
-                <dt className="type-body font-semibold">{title}</dt>
-                <dd className="type-caption text-label-secondary">{detail}</dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
+        <div className="flex flex-col gap-16">
+          <Reveal>
+            <HighlightStats />
+          </Reveal>
+          <div>
+            <Reveal>
+              <p className="type-label mb-6 text-label-tertiary">Education and recognition</p>
+            </Reveal>
+            <PosterList size="sm" items={RECOGNITION} />
+          </div>
+        </div>
       </div>
     </Section>
   );

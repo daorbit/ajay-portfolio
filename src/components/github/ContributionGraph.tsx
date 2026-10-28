@@ -3,11 +3,11 @@ import { formatContributionDate } from "@/lib/contributions";
 import { cn } from "@/lib/cn";
 
 const LEVEL_CLASSES: Record<ContributionLevel, string> = {
-  0: "bg-label/[0.06]",
-  1: "bg-accent/35",
-  2: "bg-accent/60",
-  3: "bg-accent",
-  4: "bg-link",
+  0: "bg-graph-empty",
+  1: "bg-accent/30",
+  2: "bg-accent/55",
+  3: "bg-accent/80",
+  4: "bg-accent",
 };
 
 type ContributionGraphProps = {
@@ -25,7 +25,7 @@ export default function ContributionGraph({ weeks, months, total }: Contribution
             {weeks.map((_, index) => {
               const month = months.find((item) => item.week === index);
               return (
-                <span key={index} className="type-micro relative h-4 w-3 text-label-tertiary">
+                <span key={index} className="type-label relative h-4 w-3 text-label-tertiary">
                   {month && <span className="absolute left-0 whitespace-nowrap">{month.label}</span>}
                 </span>
               );
@@ -53,7 +53,7 @@ export default function ContributionGraph({ weeks, months, total }: Contribution
           </div>
         </div>
       </div>
-      <div className="type-micro flex items-center gap-2 text-label-tertiary" aria-hidden>
+      <div className="type-label flex items-center gap-2 text-label-tertiary" aria-hidden>
         <span>Less</span>
         {([0, 1, 2, 3, 4] as const).map((level) => (
           <span key={level} className={cn("size-3 rounded-[3px]", LEVEL_CLASSES[level])} />

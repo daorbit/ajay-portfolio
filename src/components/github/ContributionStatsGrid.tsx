@@ -1,5 +1,4 @@
 import type { ContributionStats } from "@/types/github";
-import SpotlightCard from "@/components/cards/SpotlightCard";
 import CountUp from "@/components/motion/CountUp";
 
 type ContributionStatsGridProps = {
@@ -8,35 +7,25 @@ type ContributionStatsGridProps = {
 
 export default function ContributionStatsGrid({ stats }: ContributionStatsGridProps) {
   const items = [
-    { label: "Total", value: stats.total, unit: "last year" },
-    { label: "This week", value: stats.thisWeek, unit: "contributions" },
-    { label: "Best day", value: stats.bestDay, unit: "contributions" },
-    { label: "Current streak", value: stats.currentStreak, unit: "days" },
-    { label: "Longest streak", value: stats.longestStreak, unit: "days" },
+    { label: "Total", value: <CountUp value={stats.total} />, unit: "last year" },
+    { label: "This week", value: <CountUp value={stats.thisWeek} />, unit: "contributions" },
+    { label: "Best day", value: <CountUp value={stats.bestDay} />, unit: "contributions" },
+    { label: "Current streak", value: <CountUp value={stats.currentStreak} />, unit: "days" },
+    { label: "Longest streak", value: <CountUp value={stats.longestStreak} />, unit: "days" },
+    { label: "Average", value: stats.average, unit: "per day" },
   ];
 
   return (
-    <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
+    <dl className="grid grid-cols-2 border-t border-l border-hairline md:grid-cols-3">
       {items.map(({ label, value, unit }) => (
-        <li key={label}>
-          <SpotlightCard className="flex h-full flex-col gap-2 rounded-card p-5 md:p-6">
-            <p className="type-caption text-label-secondary">{label}</p>
-            <p className="flex flex-wrap items-baseline gap-x-1.5">
-              <CountUp value={value} className="type-title text-metal tabular-nums" />
-              <span className="type-micro text-label-tertiary">{unit}</span>
-            </p>
-          </SpotlightCard>
-        </li>
+        <div key={label} className="flex flex-col gap-3 border-r border-b border-hairline p-5 md:p-8">
+          <dt className="type-label text-label-tertiary">{label}</dt>
+          <dd className="flex flex-wrap items-baseline gap-x-2">
+            <span className="type-poster-md tabular-nums">{value}</span>
+            <span className="type-label text-label-secondary">{unit}</span>
+          </dd>
+        </div>
       ))}
-      <li>
-        <SpotlightCard className="flex h-full flex-col gap-2 rounded-card p-5 md:p-6">
-          <p className="type-caption text-label-secondary">Average</p>
-          <p className="flex flex-wrap items-baseline gap-x-1.5">
-            <span className="type-title text-metal tabular-nums">{stats.average}</span>
-            <span className="type-micro text-label-tertiary">per day</span>
-          </p>
-        </SpotlightCard>
-      </li>
-    </ul>
+    </dl>
   );
 }

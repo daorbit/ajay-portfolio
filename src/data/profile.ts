@@ -12,6 +12,12 @@ export const PROFILE: Profile = {
     "Front-end developer with three years of experience designing and building fast, responsive, SEO-optimized web applications with React, Next.js and TypeScript.",
 };
 
+export const AVAILABILITY = "Open to new roles";
+
+export const STACK = ["React", "Next.js", "TypeScript"];
+
+export const DISCIPLINES = ["Frontend", "UI engineering", "Performance", "SEO"];
+
 export const HIGHLIGHTS: Highlight[] = [
   { value: 3, label: "Years building production web apps" },
   { value: 12, label: "Products and websites shipped" },

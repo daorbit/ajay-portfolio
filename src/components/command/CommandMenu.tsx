@@ -68,7 +68,7 @@ export default function CommandMenu() {
       aria-label="Search"
       onClose={close}
       onClick={handleBackdropClick}
-      className="mx-auto mt-[12vh] w-[min(38rem,calc(100%-2rem))] overflow-hidden rounded-tile border border-hairline-strong bg-surface p-0 text-label shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm open:animate-dialog-in"
+      className="mx-auto mt-[12vh] w-[min(38rem,calc(100%-2rem))] overflow-hidden rounded-2xl border border-hairline-strong bg-surface p-0 text-label shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm open:animate-dialog-in"
     >
       <div className="flex items-center gap-3 border-b border-hairline px-5">
         <Search className="size-5 shrink-0 text-label-tertiary" aria-hidden />
@@ -86,7 +86,7 @@ export default function CommandMenu() {
           placeholder="Search pages, projects and links"
           className="type-body h-14 flex-1 bg-transparent text-label outline-none placeholder:text-label-tertiary"
         />
-        <kbd className="type-micro rounded-md border border-hairline px-1.5 py-0.5 text-label-tertiary">Esc</kbd>
+        <kbd className="type-label rounded-md border border-hairline px-1.5 py-0.5 text-label-tertiary">Esc</kbd>
       </div>
       <ul id={LIST_ID} role="listbox" aria-label="Results" className="max-h-[50vh] overflow-y-auto p-2">
         {items.map((item, index) => {
@@ -95,7 +95,7 @@ export default function CommandMenu() {
           return (
             <li key={item.id} role="presentation">
               {item.group !== items[index - 1]?.group && (
-                <p className="type-micro px-3 pt-3 pb-1.5 font-semibold text-label-tertiary">{item.group}</p>
+                <p className="type-label px-3 pt-3 pb-1.5 text-label-tertiary">{item.group}</p>
               )}
               <div
                 id={optionId(index)}
@@ -123,7 +123,7 @@ export default function CommandMenu() {
           <li className="type-body px-3 py-10 text-center text-label-secondary">No results for “{query}”</li>
         )}
       </ul>
-      <div className="type-micro flex items-center gap-4 border-t border-hairline px-5 py-3 text-label-tertiary">
+      <div className="type-label flex items-center gap-4 border-t border-hairline px-5 py-3 text-label-tertiary">
         <span>↑↓ to navigate</span>
         <span className="flex items-center gap-1">
           <CornerDownLeft className="size-3" aria-hidden /> to open

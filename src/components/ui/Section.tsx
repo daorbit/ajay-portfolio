@@ -1,57 +1,36 @@
 import type { ReactNode } from "react";
 import type { HeadlineSegment } from "@/types/portfolio";
 import { cn } from "@/lib/cn";
-import Reveal from "@/components/ui/Reveal";
-import AnimatedHeadline from "@/components/motion/AnimatedHeadline";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 type SectionProps = {
   id?: string;
-  eyebrow?: string;
-  title?: HeadlineSegment[];
+  index: string;
+  label: string;
+  title: HeadlineSegment[];
   intro?: string;
-  tone?: "default" | "raised";
-  width?: "content" | "wide";
   headingLevel?: "h1" | "h2";
+  className?: string;
   children: ReactNode;
 };
 
 export default function Section({
   id,
-  eyebrow,
+  index,
+  label,
   title,
   intro,
-  tone = "default",
-  width = "content",
   headingLevel = "h2",
+  className,
   children,
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={cn(
-        "py-20 md:py-28 lg:py-36",
-        headingLevel === "h2" && "border-t border-hairline",
-        tone === "raised" ? "bg-canvas-raised" : "bg-canvas",
-      )}
+      className={cn(headingLevel === "h1" ? "pt-32 pb-24 md:pt-40 md:pb-32" : "py-24 md:py-32 lg:py-40", className)}
     >
-      <div className={width === "wide" ? "wide-width" : "content-width"}>
-        {(eyebrow || title || intro) && (
-          <div className="mb-12 max-w-3xl md:mb-20">
-            {eyebrow && (
-              <Reveal>
-                <p className="type-body mb-4 font-semibold text-link">{eyebrow}</p>
-              </Reveal>
-            )}
-            {title && (
-              <AnimatedHeadline as={headingLevel} segments={title} className="type-headline text-balance" />
-            )}
-            {intro && (
-              <Reveal>
-                <p className="type-intro mt-5 text-pretty text-label-secondary">{intro}</p>
-              </Reveal>
-            )}
-          </div>
-        )}
+      <div className="page-width">
+        <SectionHeading index={index} label={label} title={title} intro={intro} as={headingLevel} />
         {children}
       </div>
     </section>

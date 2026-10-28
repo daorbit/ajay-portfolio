@@ -1,17 +1,21 @@
 import Hero from "@/components/sections/Hero";
-import Highlights from "@/components/sections/Highlights";
+import Showreel from "@/components/sections/Showreel";
+import Philosophy from "@/components/sections/Philosophy";
+import SelectedWork from "@/components/sections/SelectedWork";
+import Expertise from "@/components/sections/Expertise";
 import TechMarquee from "@/components/sections/TechMarquee";
-import FeaturedWork from "@/components/sections/FeaturedWork";
 import ContactCta from "@/components/sections/ContactCta";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Highlights />
+      <Showreel />
       <TechMarquee />
-      <FeaturedWork />
-      <ContactCta />
+      <Philosophy />
+      <SelectedWork />
+      <Expertise index="04" />
+      <ContactCta index="05" />
     </>
   );
 }

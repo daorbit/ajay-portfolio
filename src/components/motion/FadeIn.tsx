@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { APPLE_EASE } from "@/constants/motion";
+import { EXPO_EASE } from "@/constants/motion";
 
 type FadeInProps = {
   children: ReactNode;
@@ -16,9 +16,9 @@ export default function FadeIn({ children, delay = 0, className }: FadeInProps) 
   return (
     <motion.div
       className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay, ease: APPLE_EASE }}
+      transition={{ duration: 1.2, delay, ease: EXPO_EASE }}
     >
       {children}
     </motion.div>
