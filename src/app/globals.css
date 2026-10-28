@@ -1,25 +1,234 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-blue: #1558c9;
+  --brand-ink: #030407;
+  --canvas: var(--brand-ink);
+  --canvas-raised: #07080c;
+  --surface: #0c0e13;
+  --surface-hover: #11141b;
+  --hairline: rgb(255 255 255 / 0.08);
+  --hairline-strong: rgb(255 255 255 / 0.18);
+  --label: #f5f5f7;
+  --label-secondary: #a1a1a6;
+  --label-tertiary: #86868b;
+  --accent: var(--brand-blue);
+  --accent-hover: #1f66dc;
+  --link: #5b8ff0;
+  --nav: rgb(3 4 7 / 0.72);
+  --focus-ring: rgb(91 143 240 / 0.7);
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-canvas-raised: var(--canvas-raised);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-label: var(--label);
+  --color-label-secondary: var(--label-secondary);
+  --color-label-tertiary: var(--label-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-link: var(--link);
+  --color-nav: var(--nav);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --breakpoint-md: 735px;
+  --breakpoint-lg: 1069px;
+  --radius-card: 1.125rem;
+  --radius-tile: 1.75rem;
+  --ease-apple: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --spacing-nav: 3rem;
+}
+
+@utility content-width {
+  width: 87.5%;
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+@utility wide-width {
+  width: 87.5%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+@utility type-hero {
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.003em;
+  font-weight: 600;
+  @variant md {
+    font-size: 3.5rem;
+    line-height: 1.07143;
+    letter-spacing: -0.005em;
+  }
+  @variant lg {
+    font-size: 5rem;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+@utility type-headline {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-weight: 600;
+  @variant md {
+    font-size: 3rem;
+    line-height: 1.08349;
+    letter-spacing: -0.003em;
+  }
+  @variant lg {
+    font-size: 4rem;
+    line-height: 1.0625;
+    letter-spacing: -0.009em;
+  }
+}
+
+@utility type-title {
+  font-size: 1.75rem;
+  line-height: 1.14286;
+  letter-spacing: 0.007em;
+  font-weight: 600;
+  @variant lg {
+    font-size: 2rem;
+    line-height: 1.125;
+    letter-spacing: 0.004em;
+  }
+}
+
+@utility type-subhead {
+  font-size: 1.3125rem;
+  line-height: 1.19048;
+  letter-spacing: 0.011em;
+  font-weight: 600;
+  @variant md {
+    font-size: 1.5rem;
+    line-height: 1.16667;
+    letter-spacing: 0.009em;
+  }
+}
+
+@utility type-intro {
+  font-size: 1.3125rem;
+  line-height: 1.381;
+  letter-spacing: 0.011em;
+  font-weight: 400;
+  @variant md {
+    font-size: 1.5rem;
+    line-height: 1.33341;
+    letter-spacing: 0.009em;
+  }
+  @variant lg {
+    font-size: 1.75rem;
+    line-height: 1.28583;
+    letter-spacing: 0.007em;
+  }
+}
+
+@utility type-callout {
+  font-size: 1.0625rem;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  font-weight: 400;
+  @variant lg {
+    font-size: 1.1875rem;
+    line-height: 1.4211;
+    letter-spacing: 0.012em;
+  }
+}
+
+@utility type-body {
+  font-size: 1.0625rem;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  font-weight: 400;
+}
+
+@utility type-caption {
+  font-size: 0.875rem;
+  line-height: 1.42859;
+  letter-spacing: -0.016em;
+  font-weight: 400;
+}
+
+@utility type-micro {
+  font-size: 0.75rem;
+  line-height: 1.33337;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+@utility text-metal {
+  background-image: linear-gradient(180deg, #ffffff 30%, #9ea3ad 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility hero-glow {
+  background-image: radial-gradient(60% 55% at 50% 0%, rgb(21 88 201 / 0.32), transparent 72%);
+}
+
+@utility tile-glow {
+  background-image: radial-gradient(70% 80% at 100% 0%, rgb(21 88 201 / 0.2), transparent 65%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--spacing-nav);
+  }
+
+  body {
+    background: var(--canvas);
+    color: var(--label);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 4px solid var(--focus-ring);
+    outline-offset: 1px;
+  }
+
+  ::selection {
+    background: rgb(21 88 201 / 0.55);
+    color: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .reveal {
+    transition:
+      opacity 1s var(--ease-apple),
+      transform 1s var(--ease-apple);
+  }
+
+  @media (scripting: enabled) {
+    .reveal:not([data-visible="true"]) {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+  }
+
+  @media (scripting: enabled) and (prefers-reduced-motion: reduce) {
+    .reveal:not([data-visible="true"]) {
+      transform: none;
+    }
+  }
 }
