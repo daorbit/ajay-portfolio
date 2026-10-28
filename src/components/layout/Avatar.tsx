@@ -25,7 +25,7 @@ export default function Avatar({ size = "lg", className }: AvatarProps) {
         alt=""
         width={160}
         height={160}
-        className={cn("shrink-0 rounded-full object-cover ring-1 ring-hairline-strong", sizeClass)}
+        className={cn("shrink-0 rounded-full object-cover ring-2 ring-accent/60 ring-offset-2 ring-offset-canvas", sizeClass)}
       />
     );
   }
@@ -33,7 +33,7 @@ export default function Avatar({ size = "lg", className }: AvatarProps) {
   return (
     <span
       aria-hidden
-      className={cn("flex shrink-0 items-center justify-center rounded-full bg-accent text-white", sizeClass)}
+      className={cn("flex shrink-0 items-center justify-center rounded-full bg-accent text-on-accent", sizeClass)}
     >
       {PROFILE.initials}
     </span>

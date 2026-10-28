@@ -14,7 +14,7 @@ export default function MenuToggle({ open, onClick }: MenuToggleProps) {
       onClick={onClick}
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
-      className="type-label flex items-center gap-3 transition-opacity duration-300 hover:opacity-60"
+      className="type-label -my-2 flex items-center gap-3 py-2 transition-opacity duration-300 hover:opacity-60"
     >
       <span aria-hidden className="flex h-3 w-6 flex-col justify-between">
         <span className={cn(LINE, open && "translate-y-[5.5px] rotate-45")} />

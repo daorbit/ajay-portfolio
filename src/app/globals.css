@@ -3,27 +3,30 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --brand-blue: #1558c9;
-  --brand-ink: #030407;
-  --canvas: light-dark(#f4f4f0, var(--brand-ink));
-  --canvas-raised: light-dark(#e9e8e2, #0f1014);
-  --surface: light-dark(#fbfbf8, #16181d);
-  --hairline: light-dark(rgb(3 4 7 / 0.12), rgb(255 255 255 / 0.09));
-  --hairline-strong: light-dark(rgb(3 4 7 / 0.26), rgb(255 255 255 / 0.2));
-  --label: light-dark(var(--brand-ink), #f2f2ef);
-  --label-secondary: light-dark(rgb(3 4 7 / 0.64), rgb(242 242 239 / 0.66));
-  --label-tertiary: light-dark(rgb(3 4 7 / 0.46), rgb(242 242 239 / 0.44));
-  --accent: light-dark(var(--brand-blue), #2b6be0);
-  --accent-hover: light-dark(#0f479f, #3d7af0);
-  --link: light-dark(var(--brand-blue), #7aa7f7);
-  --glass: light-dark(rgb(3 4 7 / 0.04), rgb(255 255 255 / 0.05));
-  --nav: light-dark(rgb(244 244 240 / 0.82), rgb(3 4 7 / 0.78));
-  --wash: light-dark(rgb(21 88 201 / 0.14), rgb(43 107 224 / 0.1));
-  --focus-ring: light-dark(rgb(21 88 201 / 0.55), rgb(122 167 247 / 0.6));
-  --selection: light-dark(rgb(21 88 201 / 0.2), rgb(43 107 224 / 0.45));
-  --graph-empty: light-dark(rgb(3 4 7 / 0.08), rgb(255 255 255 / 0.07));
-  --scrollbar: light-dark(rgb(3 4 7 / 0.22), rgb(255 255 255 / 0.18));
-  --scrollbar-hover: light-dark(rgb(3 4 7 / 0.4), rgb(255 255 255 / 0.34));
+  --moss: #4a6b3a;
+  --sage: #a6bc86;
+  --clay: #8b5a3c;
+  --caramel: #c99a6e;
+  --canvas: light-dark(#f2eee5, #0f140f);
+  --canvas-raised: light-dark(#e6e0d3, #172017);
+  --surface: light-dark(#f9f6ef, #1d271c);
+  --hairline: light-dark(rgb(28 26 22 / 0.13), rgb(237 231 219 / 0.1));
+  --hairline-strong: light-dark(rgb(28 26 22 / 0.28), rgb(237 231 219 / 0.22));
+  --label: light-dark(#1c1a16, #ede7db);
+  --label-secondary: light-dark(rgb(28 26 22 / 0.66), rgb(237 231 219 / 0.66));
+  --label-tertiary: light-dark(rgb(28 26 22 / 0.47), rgb(237 231 219 / 0.44));
+  --accent: light-dark(var(--moss), var(--sage));
+  --accent-hover: light-dark(#3b5a2d, #b9cd9b);
+  --on-accent: light-dark(#f9f6ef, #0f140f);
+  --earth: light-dark(var(--clay), var(--caramel));
+  --link: light-dark(var(--moss), var(--sage));
+  --glass: light-dark(rgb(28 26 22 / 0.04), rgb(237 231 219 / 0.05));
+  --nav: light-dark(rgb(242 238 229 / 0.84), rgb(15 20 15 / 0.82));
+  --focus-ring: light-dark(rgb(74 107 58 / 0.55), rgb(166 188 134 / 0.6));
+  --selection: light-dark(rgb(139 90 60 / 0.22), rgb(201 154 110 / 0.35));
+  --graph-empty: light-dark(rgb(28 26 22 / 0.08), rgb(237 231 219 / 0.07));
+  --scrollbar: light-dark(rgb(28 26 22 / 0.24), rgb(237 231 219 / 0.2));
+  --scrollbar-hover: light-dark(rgb(28 26 22 / 0.42), rgb(237 231 219 / 0.36));
   color-scheme: light dark;
 }
 
@@ -46,6 +49,8 @@
   --color-label-tertiary: var(--label-tertiary);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-earth: var(--earth);
   --color-link: var(--link);
   --color-glass: var(--glass);
   --color-nav: var(--nav);
@@ -63,17 +68,9 @@
   --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --spacing-nav: 5rem;
   --animate-marquee: marquee 38s linear infinite;
-  --animate-dialog-in: dialog-in 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
   --animate-menu-in: menu-in 0.8s cubic-bezier(0.76, 0, 0.24, 1);
   --animate-pulse-dot: pulse-dot 2.4s ease-out infinite;
   --animate-scroll-line: scroll-line 1.8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-
-  @keyframes dialog-in {
-    from {
-      opacity: 0;
-      transform: translateY(0.5rem) scale(0.97);
-    }
-  }
 
   @keyframes menu-in {
     from {
@@ -95,11 +92,11 @@
 
   @keyframes pulse-dot {
     0% {
-      box-shadow: 0 0 0 0 rgb(21 88 201 / 0.55);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
     }
     70%,
     100% {
-      box-shadow: 0 0 0 0.5rem rgb(21 88 201 / 0);
+      box-shadow: 0 0 0 0.5rem transparent;
     }
   }
 
@@ -122,7 +119,7 @@
 
 @utility type-poster {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 9vw, 9.5rem);
+  font-size: clamp(2.75rem, 9vw, 9.5rem);
   line-height: 0.9;
   letter-spacing: -0.01em;
   font-weight: 400;
@@ -131,7 +128,7 @@
 
 @utility type-poster-xl {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 15vw, 15rem);
+  font-size: clamp(3.5rem, 15vw, 15rem);
   line-height: 0.84;
   letter-spacing: -0.01em;
   font-weight: 400;
@@ -140,7 +137,7 @@
 
 @utility type-poster-md {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 6rem);
+  font-size: clamp(2.25rem, 6vw, 6rem);
   line-height: 0.9;
   letter-spacing: -0.01em;
   font-weight: 400;
@@ -149,7 +146,7 @@
 
 @utility type-poster-sm {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(1.75rem, 4vw, 4rem);
   line-height: 0.92;
   letter-spacing: 0;
   font-weight: 400;
@@ -158,7 +155,7 @@
 
 @utility type-serif {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 7vw, 6.75rem);
+  font-size: clamp(2.5rem, 7vw, 6.75rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
   font-weight: 400;
@@ -166,7 +163,7 @@
 
 @utility type-serif-sm {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   line-height: 1.1;
   letter-spacing: -0.015em;
   font-weight: 400;
@@ -200,14 +197,6 @@
   text-transform: uppercase;
 }
 
-@utility hero-wash {
-  background-image: radial-gradient(55% 65% at 88% 8%, var(--wash), transparent 70%);
-}
-
-@utility mask-fade-x {
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -216,6 +205,15 @@
 
   html:has(dialog[open]) {
     overflow: hidden;
+  }
+
+  a[href],
+  button:not(:disabled),
+  summary,
+  label[for],
+  select,
+  [role="button"] {
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar {
@@ -247,6 +245,8 @@
     background: var(--canvas);
     color: var(--label);
     font-family: var(--font-sans);
+    overflow-x: clip;
+    overflow-wrap: break-word;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition:
@@ -269,7 +269,6 @@
     }
 
     .animate-marquee,
-    .animate-dialog-in,
     .animate-menu-in,
     .animate-pulse-dot,
     .animate-scroll-line {

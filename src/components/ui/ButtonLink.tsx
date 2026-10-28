@@ -13,9 +13,9 @@ type ButtonLinkProps = {
 };
 
 const VARIANTS: Record<Variant, string> = {
-  primary: "rounded-full bg-label px-6 py-3.5 text-canvas hover:bg-accent hover:text-white",
-  outline: "rounded-full border border-hairline-strong bg-glass px-6 py-3.5 backdrop-blur-sm hover:border-label",
-  text: "border-b border-current pb-1 hover:opacity-60",
+  primary: "rounded-full bg-accent px-6 py-3.5 text-on-accent hover:bg-accent-hover",
+  outline: "rounded-full border border-accent/50 px-6 py-3.5 text-accent hover:border-accent hover:bg-accent/10",
+  text: "border-b border-current pb-1 text-accent hover:opacity-70",
 };
 
 export default function ButtonLink({ href, children, variant = "primary", external = false, className }: ButtonLinkProps) {

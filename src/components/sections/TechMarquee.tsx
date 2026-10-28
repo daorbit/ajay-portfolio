@@ -13,7 +13,7 @@ export default function TechMarquee() {
               <li key={logo.title} className="type-poster-md flex items-center gap-[0.3em] pr-[0.6em]">
                 <BrandLogo logo={logo} className="size-[0.55em] text-label-tertiary" />
                 {logo.title}
-                <span aria-hidden className="ml-[0.6em] size-[0.12em] rounded-full bg-accent" />
+                <span aria-hidden className="ml-[0.6em] size-[0.12em] rounded-full bg-earth" />
               </li>
             ))}
           </ul>

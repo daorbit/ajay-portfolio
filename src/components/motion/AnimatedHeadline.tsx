@@ -32,7 +32,7 @@ export default function AnimatedHeadline({
         <Fragment key={`${word}-${index}`}>
           <span className="mb-[-0.12em] inline-block overflow-hidden pb-[0.12em] align-bottom">
             <motion.span
-              className={cn("inline-block", muted && "font-serif tracking-tight text-label-secondary normal-case italic")}
+              className={cn("inline-block", muted && "font-serif tracking-tight text-earth normal-case italic")}
               initial={hidden}
               animate={trigger === "load" ? visible : undefined}
               whileInView={trigger === "view" ? visible : undefined}

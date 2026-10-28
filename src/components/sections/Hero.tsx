@@ -11,10 +11,10 @@ import StatusDot from "@/components/ui/StatusDot";
 
 export default function Hero() {
   return (
-    <section className="hero-wash relative">
-      <div className="page-width grid min-h-svh grid-rows-[auto_1fr_auto] pt-24 pb-8 md:pt-28">
+    <section className="relative">
+      <div className="page-width pt-24 pb-8 md:pt-28">
         <HeroMeta />
-        <div className="grid items-end gap-10 py-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
+        <div className="grid items-end gap-10 pt-12 pb-14 md:pt-16 md:pb-20 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
           <div>
             <FadeIn delay={0.1}>
               <IndexLabel className="mb-7">Index / 01</IndexLabel>

@@ -2,7 +2,6 @@
 
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/cn";
-import SearchTrigger from "@/components/command/SearchTrigger";
 import HeaderNav from "@/components/layout/HeaderNav";
 import MenuToggle from "@/components/layout/MenuToggle";
 import ThemeToggle from "@/components/theme/ThemeToggle";
@@ -23,18 +22,16 @@ export default function SiteHeader({ onOpenMenu }: SiteHeaderProps) {
       )}
     >
       <div className="page-width flex h-nav items-center justify-between gap-6">
-        <Wordmark withAvatar nameClassName="md:max-lg:sr-only" />
-        <div className="hidden items-center gap-8 md:flex lg:gap-10">
-          <HeaderNav />
-          <span aria-hidden className="h-4 w-px bg-hairline-strong" />
-          <div className="flex items-center gap-5">
-            <SearchTrigger compact className="lg:hidden" />
-            <SearchTrigger className="hidden lg:inline-flex" />
-            <ThemeToggle compact />
+        <Wordmark />
+        <div className="flex items-center gap-5 md:gap-7 lg:gap-10">
+          <div className="hidden md:block">
+            <HeaderNav />
           </div>
-        </div>
-        <div className="md:hidden">
-          <MenuToggle open={false} onClick={onOpenMenu} />
+          <span aria-hidden className="hidden h-4 w-px bg-hairline-strong md:block" />
+          <ThemeToggle compact />
+          <div className="md:hidden">
+            <MenuToggle open={false} onClick={onOpenMenu} />
+          </div>
         </div>
       </div>
     </header>

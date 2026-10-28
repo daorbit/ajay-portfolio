@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Instrument_Serif, Inter } from "next/font/google";
 import SiteNav from "@/components/layout/SiteNav";
 import Footer from "@/components/layout/Footer";
-import CommandMenu from "@/components/command/CommandMenu";
-import CommandMenuProvider from "@/components/command/CommandMenuProvider";
 import QuantalogTracker from "@/components/analytics/QuantalogTracker";
 import { PROFILE } from "@/data/profile";
 import { THEME_SCRIPT } from "@/lib/theme";
@@ -38,8 +36,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f4f0" },
-    { media: "(prefers-color-scheme: dark)", color: "#030407" },
+    { media: "(prefers-color-scheme: light)", color: "#f2eee5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f140f" },
   ],
   colorScheme: "light dark",
 };
@@ -56,14 +54,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className="min-h-full">
-        <CommandMenuProvider>
-          <SiteNav />
-          <div className="flex min-h-dvh flex-col">
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <CommandMenu />
-        </CommandMenuProvider>
+        <SiteNav />
+        <div className="flex min-h-dvh flex-col">
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
         <QuantalogTracker />
       </body>
     </html>

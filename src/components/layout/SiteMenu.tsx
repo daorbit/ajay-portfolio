@@ -2,7 +2,6 @@
 
 import { PROFILE } from "@/data/profile";
 import { useModalDialog } from "@/hooks/useModalDialog";
-import SearchTrigger from "@/components/command/SearchTrigger";
 import MenuLinks from "@/components/layout/MenuLinks";
 import MenuToggle from "@/components/layout/MenuToggle";
 import SocialLinks from "@/components/layout/SocialLinks";
@@ -26,7 +25,7 @@ export default function SiteMenu({ open, onClose }: SiteMenuProps) {
     >
       <div className="page-width flex min-h-full flex-col">
         <div className="flex h-nav shrink-0 items-center justify-between">
-          <Wordmark withAvatar onNavigate={onClose} />
+          <Wordmark onNavigate={onClose} />
           <MenuToggle open onClick={onClose} />
         </div>
         <nav aria-label="Primary" className="flex flex-1 items-center py-10">
@@ -48,10 +47,7 @@ export default function SiteMenu({ open, onClose }: SiteMenuProps) {
           </div>
           <div className="md:text-right">
             <p className="type-label text-label-tertiary">Preferences</p>
-            <div className="mt-3 flex flex-wrap gap-6 md:justify-end">
-              <ThemeToggle />
-              <SearchTrigger onOpen={onClose} />
-            </div>
+            <ThemeToggle className="mt-3" />
           </div>
         </div>
       </div>

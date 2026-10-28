@@ -21,10 +21,11 @@ export default function ThemeToggle({ compact = false, className }: ThemeToggleP
       aria-label={`Switch to ${next} mode`}
       className={cn(
         "type-label inline-flex items-center gap-2 text-label-secondary transition-colors duration-300 hover:text-label",
+        compact && "-m-2 p-2",
         className,
       )}
     >
-      <Icon className="size-3.5" aria-hidden />
+      <Icon className={compact ? "size-4" : "size-3.5"} aria-hidden />
       {!compact && <span>{next} mode</span>}
     </button>
   );
