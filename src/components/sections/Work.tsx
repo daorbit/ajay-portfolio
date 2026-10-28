@@ -1,6 +1,7 @@
 import { PROJECT_GROUPS, PROJECTS } from "@/data/projects";
 import FeaturedProjectCard from "@/components/cards/FeaturedProjectCard";
 import ProjectCard from "@/components/cards/ProjectCard";
+import CompanyWork from "@/components/sections/CompanyWork";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 
@@ -11,7 +12,7 @@ export default function Work() {
       width="wide"
       eyebrow="Selected work"
       title={[{ text: "Products shipped" }, { text: "to production.", muted: true }]}
-      intro="AI platforms, real-time trading tools, open-source packages and fast websites, each one polished to the last pixel."
+      intro="SaaS products, open-source packages and fast websites, each one polished to the last pixel."
     >
       <div className="flex flex-col gap-24 md:gap-32">
         {PROJECT_GROUPS.map(({ id, title, description }) => {
@@ -25,7 +26,7 @@ export default function Work() {
                 <h3 className="type-title">{title}</h3>
                 <p className="type-body text-label-secondary">{description}</p>
               </Reveal>
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 {featured.map((project, index) => (
                   <FeaturedProjectCard key={project.name} project={project} reversed={index % 2 === 1} />
                 ))}
@@ -36,6 +37,7 @@ export default function Work() {
             </div>
           );
         })}
+        <CompanyWork />
       </div>
     </Section>
   );

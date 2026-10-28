@@ -14,7 +14,7 @@ export default function FeaturedProjectCard({ project, reversed = false }: Featu
   const { name, category, description, tech, url } = project;
 
   return (
-    <Reveal className="md:col-span-2 lg:col-span-6">
+    <Reveal className="md:col-span-2">
       <SpotlightCard className="tile-glow grid lg:grid-cols-[1fr_1.3fr]">
         <div className={cn("flex flex-col p-8 md:p-12 lg:py-16", reversed && "lg:order-last")}>
           <div className="flex items-start justify-between gap-6">

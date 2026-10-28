@@ -34,10 +34,9 @@ export type Project = {
   description: string;
   group: ProjectGroupId;
   layout: ProjectLayout;
-  monogram: string;
+  image: string;
   tech?: string[];
   url?: string;
-  image?: string;
 };
 
 export type Feature = {

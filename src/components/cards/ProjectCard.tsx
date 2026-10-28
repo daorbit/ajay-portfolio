@@ -12,12 +12,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const { name, category, description, tech, url } = project;
 
   return (
-    <Reveal className="h-full lg:col-span-2">
+    <Reveal className="h-full">
       <SpotlightCard className="flex h-full flex-col">
-        <div className="relative h-56 overflow-hidden border-b border-hairline bg-canvas-raised md:h-64">
+        <div className="relative h-60 overflow-hidden border-b border-hairline bg-canvas-raised md:h-72 lg:h-80">
           <div aria-hidden className="dot-grid absolute inset-0" />
-          <div className="relative size-full px-6 pt-8 pb-4 transition-transform duration-700 ease-apple group-hover:-translate-y-1.5 group-hover:scale-[1.04]">
-            <ProjectMedia project={project} sizes="(min-width: 1069px) 380px, (min-width: 735px) 45vw, 85vw" />
+          <div className="relative size-full px-6 pt-8 pb-4 transition-transform duration-700 ease-apple group-hover:-translate-y-1.5 group-hover:scale-[1.04] md:px-10 md:pt-10">
+            <ProjectMedia project={project} sizes="(min-width: 1069px) 560px, (min-width: 735px) 45vw, 85vw" />
           </div>
         </div>
         <div className="flex flex-1 flex-col p-7 md:p-8">
