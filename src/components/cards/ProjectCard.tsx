@@ -1,51 +1,37 @@
-import { ArrowUpRight } from "lucide-react";
-import type { Project, ProjectLayout } from "@/types/portfolio";
-import { cn } from "@/lib/cn";
+import type { Project } from "@/types/portfolio";
 import Reveal from "@/components/ui/Reveal";
-
-const LAYOUT_CLASSES: Record<ProjectLayout, string> = {
-  featured: "lg:col-span-3",
-  standard: "lg:col-span-2",
-};
+import ProjectLink from "@/components/cards/ProjectLink";
+import ProjectMedia from "@/components/cards/ProjectMedia";
+import SpotlightCard from "@/components/cards/SpotlightCard";
 
 type ProjectCardProps = {
   project: Project;
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const { name, category, description, tech, layout, url } = project;
-  const isFeatured = layout === "featured";
+  const { name, category, description, tech, url } = project;
 
   return (
-    <Reveal className={cn("h-full", LAYOUT_CLASSES[layout])}>
-      <article
-        className={cn(
-          "group relative flex h-full flex-col rounded-tile border border-hairline bg-surface p-8 transition-colors duration-500 ease-apple hover:border-hairline-strong hover:bg-surface-hover md:p-10",
-          isFeatured && "tile-glow min-h-80 lg:min-h-[26rem]",
-        )}
-      >
-        <div className="flex items-start justify-between gap-6">
-          <p className="type-caption font-semibold text-label-secondary">{category}</p>
-          {url && (
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-hairline-strong text-label transition-colors duration-300 ease-apple after:absolute after:inset-0 after:rounded-tile group-hover:border-accent group-hover:bg-accent"
-            >
-              <ArrowUpRight className="size-4" aria-hidden />
-              <span className="sr-only">Visit {name} (opens in a new tab)</span>
-            </a>
-          )}
+    <Reveal className="h-full lg:col-span-2">
+      <SpotlightCard className="flex h-full flex-col">
+        <div className="relative h-56 overflow-hidden border-b border-hairline bg-canvas-raised md:h-64">
+          <div aria-hidden className="dot-grid absolute inset-0" />
+          <div className="relative size-full px-6 pt-8 pb-4 transition-transform duration-700 ease-apple group-hover:-translate-y-1.5 group-hover:scale-[1.04]">
+            <ProjectMedia project={project} sizes="(min-width: 1069px) 380px, (min-width: 735px) 45vw, 85vw" />
+          </div>
         </div>
-        <div className="mt-auto pt-16">
-          <h3 className={cn("text-balance", isFeatured ? "type-headline" : "type-title")}>{name}</h3>
-          <p className={cn("mt-4 max-w-xl text-label-secondary", isFeatured ? "type-callout" : "type-body")}>
-            {description}
-          </p>
-          {tech && <p className="type-caption mt-6 text-label-tertiary">{tech.join("  ·  ")}</p>}
+        <div className="flex flex-1 flex-col p-7 md:p-8">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="type-caption font-semibold text-label-secondary">{category}</p>
+              <h3 className="type-subhead mt-2 text-balance">{name}</h3>
+            </div>
+            {url && <ProjectLink name={name} url={url} />}
+          </div>
+          <p className="type-body mt-3 text-label-secondary">{description}</p>
+          {tech && <p className="type-caption mt-auto pt-6 text-label-tertiary">{tech.join("  ·  ")}</p>}
         </div>
-      </article>
+      </SpotlightCard>
     </Reveal>
   );
 }

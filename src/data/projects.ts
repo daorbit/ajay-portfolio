@@ -27,7 +27,9 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Redux"],
     group: "products",
     layout: "featured",
+    monogram: "Q",
     url: "https://quantalog.daorbit.in",
+    image: "/projects/quantalog.webp",
   },
   {
     name: "CME Revamp",
@@ -37,7 +39,9 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "WebSockets"],
     group: "products",
     layout: "featured",
+    monogram: "CME",
     url: "https://www.cmegroup.com/trading_tools/simulator",
+    image: "/projects/cme.webp",
   },
   {
     name: "QR Studio",
@@ -46,7 +50,9 @@ export const PROJECTS: Project[] = [
       "Branded QR codes with custom colors and logos, redirectable after printing, with scan analytics, passwords, expiry and scan limits.",
     group: "products",
     layout: "standard",
+    monogram: "QR",
     url: "https://qr.daorbit.in",
+    image: "/projects/qr-studio.webp",
   },
   {
     name: "FAB Builder",
@@ -55,6 +61,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Ant Design"],
     group: "products",
     layout: "standard",
+    monogram: "FAB",
   },
   {
     name: "FAB Analytics",
@@ -63,7 +70,9 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Ant Design"],
     group: "products",
     layout: "standard",
+    monogram: "FA",
     url: "https://analytics.fabbuilder.com",
+    image: "/projects/fab-analytics.webp",
   },
   {
     name: "Da Text Editor",
@@ -72,7 +81,9 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript"],
     group: "tools",
     layout: "standard",
+    monogram: "Da",
     url: "https://da-text-editor.daorbit.in",
+    image: "/projects/da-text-editor.webp",
   },
   {
     name: "Da Frame Set",
@@ -81,7 +92,9 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript"],
     group: "tools",
     layout: "standard",
+    monogram: "Da",
     url: "https://da-frame-set.daorbit.in",
+    image: "/projects/da-frame-set.webp",
   },
   {
     name: "Page Pilot",
@@ -90,7 +103,9 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Ant Design"],
     group: "tools",
     layout: "standard",
+    monogram: "PP",
     url: "https://pagepilot.fabbuilder.com",
+    image: "/projects/page-pilot.webp",
   },
   {
     name: "Lots of Trips",
@@ -100,7 +115,9 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js"],
     group: "websites",
     layout: "standard",
+    monogram: "LT",
     url: "https://www.lotsoftrips.in",
+    image: "/projects/lots-of-trips.webp",
   },
   {
     name: "Future Music Academy",
@@ -110,7 +127,9 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js"],
     group: "websites",
     layout: "standard",
+    monogram: "FM",
     url: "https://chika-music.vercel.app",
+    image: "/projects/future-music.webp",
   },
   {
     name: "FAB Website, Code Rower, Dream It, Inventory Lite",
@@ -119,5 +138,6 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     group: "websites",
     layout: "standard",
+    monogram: "4 sites",
   },
 ];

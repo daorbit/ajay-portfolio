@@ -9,7 +9,7 @@ export const PROFILE: Profile = {
 };
 
 export const HIGHLIGHTS: Highlight[] = [
-  { value: "3", label: "Years building production web apps" },
-  { value: "12", label: "Products and websites shipped" },
-  { value: "2", label: "Open-source React packages on npm" },
+  { value: 3, label: "Years building production web apps" },
+  { value: 12, label: "Products and websites shipped" },
+  { value: 2, label: "Open-source React packages on npm" },
 ];

@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
+import type { HeadlineSegment } from "@/types/portfolio";
 import { cn } from "@/lib/cn";
 import Reveal from "@/components/ui/Reveal";
+import AnimatedHeadline from "@/components/motion/AnimatedHeadline";
 
 type SectionProps = {
   id?: string;
   eyebrow?: string;
-  title?: string;
+  title?: HeadlineSegment[];
   intro?: string;
   tone?: "default" | "raised";
   width?: "content" | "wide";
@@ -21,8 +23,6 @@ export default function Section({
   width = "content",
   children,
 }: SectionProps) {
-  const hasHeader = eyebrow || title || intro;
-
   return (
     <section
       id={id}
@@ -32,12 +32,20 @@ export default function Section({
       )}
     >
       <div className={width === "wide" ? "wide-width" : "content-width"}>
-        {hasHeader && (
-          <Reveal className="mb-12 max-w-3xl md:mb-20">
-            {eyebrow && <p className="type-body mb-4 font-semibold text-link">{eyebrow}</p>}
-            {title && <h2 className="type-headline text-balance">{title}</h2>}
-            {intro && <p className="type-intro mt-5 text-pretty text-label-secondary">{intro}</p>}
-          </Reveal>
+        {(eyebrow || title || intro) && (
+          <div className="mb-12 max-w-3xl md:mb-20">
+            {eyebrow && (
+              <Reveal>
+                <p className="type-body mb-4 font-semibold text-link">{eyebrow}</p>
+              </Reveal>
+            )}
+            {title && <AnimatedHeadline segments={title} className="type-headline text-balance" />}
+            {intro && (
+              <Reveal>
+                <p className="type-intro mt-5 text-pretty text-label-secondary">{intro}</p>
+              </Reveal>
+            )}
+          </div>
         )}
         {children}
       </div>

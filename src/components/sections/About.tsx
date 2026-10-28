@@ -4,7 +4,12 @@ import Section from "@/components/ui/Section";
 
 export default function About() {
   return (
-    <Section id="about" width="wide" eyebrow="About" title="Design-minded. Detail-obsessed.">
+    <Section
+      id="about"
+      width="wide"
+      eyebrow="About"
+      title={[{ text: "Design-minded." }, { text: "Detail-obsessed.", muted: true }]}
+    >
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
         <Reveal className="flex flex-col gap-6">
           <p className="type-intro text-label">

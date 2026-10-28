@@ -6,8 +6,16 @@ export type Profile = {
 };
 
 export type Highlight = {
-  value: string;
+  value: number;
+  suffix?: string;
   label: string;
+};
+
+export type MediaDevice = "macbook-pro-16" | "browser" | "iphone-pro";
+
+export type Screenshot = {
+  src: string;
+  alt: string;
 };
 
 export type ProjectLayout = "featured" | "standard";
@@ -26,8 +34,10 @@ export type Project = {
   description: string;
   group: ProjectGroupId;
   layout: ProjectLayout;
+  monogram: string;
   tech?: string[];
   url?: string;
+  image?: string;
 };
 
 export type Feature = {
@@ -38,6 +48,16 @@ export type Feature = {
 export type Recognition = {
   title: string;
   detail: string;
+};
+
+export type ToolLogo = {
+  title: string;
+  path: string;
+};
+
+export type HeadlineSegment = {
+  text: string;
+  muted?: boolean;
 };
 
 export type FormEmbedMessage = {

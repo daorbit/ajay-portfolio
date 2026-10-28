@@ -26,17 +26,3 @@ export const FEATURES: Feature[] = [
     description: "Maintainable code, thoughtful reviews and clear documentation for the team.",
   },
 ];
-
-export const TOOLKIT: string[] = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "JavaScript",
-  "Redux",
-  "Tailwind CSS",
-  "MUI",
-  "Ant Design",
-  "Bootstrap",
-  "REST APIs",
-  "WebSockets",
-];

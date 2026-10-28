@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import Highlights from "@/components/sections/Highlights";
+import TechMarquee from "@/components/sections/TechMarquee";
 import Work from "@/components/sections/Work";
 import Expertise from "@/components/sections/Expertise";
 import About from "@/components/sections/About";
@@ -10,6 +11,7 @@ export default function Home() {
     <main className="flex-1">
       <Hero />
       <Highlights />
+      <TechMarquee />
       <Work />
       <Expertise />
       <About />
