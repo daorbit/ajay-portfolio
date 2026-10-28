@@ -5,7 +5,8 @@ export const PROFILE: Profile = {
   initials: "AG",
   role: "Front-End Developer",
   email: "goswamiajay526@gmail.com",
-  github: "daorbit",
+  github: "ajjjugoswami",
+  githubAccounts: ["ajjjugoswami", "daorbit"],
   summary:
     "Front-end developer with three years of experience designing and building fast, responsive, SEO-optimized web applications with React, Next.js and TypeScript.",
 };

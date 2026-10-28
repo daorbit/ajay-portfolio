@@ -1,5 +1,7 @@
 import type {
   ContributionDay,
+  ContributionLevel,
+  ContributionResponse,
   ContributionStats,
   ContributionWeek,
   MonthLabel,
@@ -9,6 +11,35 @@ const MONTH_FORMAT = new Intl.DateTimeFormat("en", { month: "short", timeZone: "
 
 function toDate(date: string) {
   return new Date(`${date}T00:00:00Z`);
+}
+
+function toLevel(count: number, max: number): ContributionLevel {
+  if (count === 0 || max === 0) return 0;
+  const ratio = count / max;
+  if (ratio <= 0.25) return 1;
+  if (ratio <= 0.5) return 2;
+  if (ratio <= 0.75) return 3;
+  return 4;
+}
+
+export function mergeContributions(responses: ContributionResponse[]): ContributionResponse {
+  const counts = new Map<string, number>();
+  for (const { contributions } of responses) {
+    for (const { date, count } of contributions) {
+      counts.set(date, (counts.get(date) ?? 0) + count);
+    }
+  }
+
+  const dates = [...counts.keys()].sort();
+  const max = Math.max(0, ...counts.values());
+
+  return {
+    total: { lastYear: responses.reduce((sum, response) => sum + response.total.lastYear, 0) },
+    contributions: dates.map((date) => {
+      const count = counts.get(date) ?? 0;
+      return { date, count, level: toLevel(count, max) };
+    }),
+  };
 }
 
 export function getContributionStats(days: ContributionDay[], total: number): ContributionStats {

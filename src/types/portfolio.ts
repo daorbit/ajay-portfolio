@@ -4,6 +4,7 @@ export type Profile = {
   role: string;
   email: string;
   github: string;
+  githubAccounts: string[];
   summary: string;
   photo?: string;
 };
