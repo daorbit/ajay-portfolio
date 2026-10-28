@@ -11,6 +11,7 @@ type SectionProps = {
   intro?: string;
   tone?: "default" | "raised";
   width?: "content" | "wide";
+  headingLevel?: "h1" | "h2";
   children: ReactNode;
 };
 
@@ -21,13 +22,15 @@ export default function Section({
   intro,
   tone = "default",
   width = "content",
+  headingLevel = "h2",
   children,
 }: SectionProps) {
   return (
     <section
       id={id}
       className={cn(
-        "border-t border-hairline py-20 md:py-28 lg:py-36",
+        "py-20 md:py-28 lg:py-36",
+        headingLevel === "h2" && "border-t border-hairline",
         tone === "raised" ? "bg-canvas-raised" : "bg-canvas",
       )}
     >
@@ -39,7 +42,9 @@ export default function Section({
                 <p className="type-body mb-4 font-semibold text-link">{eyebrow}</p>
               </Reveal>
             )}
-            {title && <AnimatedHeadline segments={title} className="type-headline text-balance" />}
+            {title && (
+              <AnimatedHeadline as={headingLevel} segments={title} className="type-headline text-balance" />
+            )}
             {intro && (
               <Reveal>
                 <p className="type-intro mt-5 text-pretty text-label-secondary">{intro}</p>

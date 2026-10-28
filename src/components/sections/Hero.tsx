@@ -30,11 +30,11 @@ export default function Hero() {
         <FadeIn delay={0.7}>
           <p className="type-intro mx-auto mt-8 max-w-2xl text-pretty text-label-secondary">{PROFILE.summary}</p>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            <ButtonLink href="/#work">
+            <ButtonLink href="/projects">
               View work
               <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>
-            <ButtonLink href="/#contact" variant="text">
+            <ButtonLink href="/contact" variant="text">
               Get in touch
               <ChevronRight className="size-4" aria-hidden />
             </ButtonLink>

@@ -8,10 +8,10 @@ import Section from "@/components/ui/Section";
 export default function Work() {
   return (
     <Section
-      id="work"
       width="wide"
-      eyebrow="Selected work"
-      title={[{ text: "Products shipped" }, { text: "to production.", muted: true }]}
+      headingLevel="h1"
+      eyebrow="Projects"
+      title={[{ text: "Things I've" }, { text: "designed and built.", muted: true }]}
       intro="SaaS products, open-source packages and fast websites, each one polished to the last pixel."
     >
       <div className="flex flex-col gap-24 md:gap-32">

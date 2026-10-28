@@ -5,8 +5,8 @@ import Section from "@/components/ui/Section";
 export default function About() {
   return (
     <Section
-      id="about"
       width="wide"
+      headingLevel="h1"
       eyebrow="About"
       title={[{ text: "Design-minded." }, { text: "Detail-obsessed.", muted: true }]}
     >

@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Layers, User, type LucideIcon } from "lucide-react";
+import { FolderKanban, House, LayoutDashboard, Mail, User, type LucideIcon } from "lucide-react";
 
 export type NavLink = {
   label: string;
@@ -7,9 +7,9 @@ export type NavLink = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Work", href: "/#work", icon: BriefcaseBusiness },
-  { label: "Expertise", href: "/#expertise", icon: Layers },
-  { label: "About", href: "/#about", icon: User },
+  { label: "Home", href: "/", icon: House },
+  { label: "Projects", href: "/projects", icon: FolderKanban },
+  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { label: "About", href: "/about", icon: User },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
-
-export const CONTACT_HREF = "/#contact";

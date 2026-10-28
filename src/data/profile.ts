@@ -2,8 +2,10 @@ import type { Highlight, Profile } from "@/types/portfolio";
 
 export const PROFILE: Profile = {
   name: "Ajay Goswami",
+  initials: "AG",
   role: "Front-End Developer",
   email: "goswamiajay526@gmail.com",
+  github: "daorbit",
   summary:
     "Front-end developer with three years of experience designing and building fast, responsive, SEO-optimized web applications with React, Next.js and TypeScript.",
 };

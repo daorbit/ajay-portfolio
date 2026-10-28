@@ -6,7 +6,6 @@ import SpotlightCard from "@/components/cards/SpotlightCard";
 export default function Expertise() {
   return (
     <Section
-      id="expertise"
       tone="raised"
       width="wide"
       eyebrow="Expertise"

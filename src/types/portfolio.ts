@@ -1,8 +1,11 @@
 export type Profile = {
   name: string;
+  initials: string;
   role: string;
   email: string;
+  github: string;
   summary: string;
+  photo?: string;
 };
 
 export type Highlight = {
