@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         pathname: "/u/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/dkt6vvcdo/image/upload/**",
+      },
     ],
   },
   turbopack: {
