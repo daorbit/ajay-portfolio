@@ -1,6 +1,7 @@
 import { PROFILE } from "@/data/profile";
+import { DIRECT_LINKS } from "@/data/social";
 import ContactForm from "@/components/forms/ContactForm";
-import SocialLinks from "@/components/layout/SocialLinks";
+import ContactLinks from "@/components/layout/ContactLinks";
 import AnimatedHeadline from "@/components/motion/AnimatedHeadline";
 import IndexLabel from "@/components/ui/IndexLabel";
 import Reveal from "@/components/ui/Reveal";
@@ -35,8 +36,8 @@ export default function Contact() {
               </a>
             </div>
             <div>
-              <p className="type-label text-label-tertiary">Elsewhere</p>
-              <SocialLinks className="mt-3 flex-col" />
+              <p className="type-label text-label-tertiary">Phone &amp; LinkedIn</p>
+              <ContactLinks links={DIRECT_LINKS} className="mt-3" />
             </div>
           </Reveal>
           <Reveal className="overflow-hidden rounded-panel border border-hairline bg-surface">

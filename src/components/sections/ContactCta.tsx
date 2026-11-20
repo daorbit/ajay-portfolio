@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { PROFILE } from "@/data/profile";
+import { DIRECT_LINKS } from "@/data/social";
+import ContactLinks from "@/components/layout/ContactLinks";
 import AnimatedHeadline from "@/components/motion/AnimatedHeadline";
 import ButtonLink from "@/components/ui/ButtonLink";
 import IndexLabel from "@/components/ui/IndexLabel";
@@ -31,6 +33,7 @@ export default function ContactCta({ index }: ContactCtaProps) {
             >
               {PROFILE.email}
             </a>
+            <ContactLinks links={DIRECT_LINKS} inline className="mt-3 text-label-secondary" />
           </div>
           <ButtonLink href="/contact" className="self-start md:self-auto">
             Get in touch

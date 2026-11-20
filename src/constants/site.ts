@@ -2,6 +2,8 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://ajy-portfo
 
 export const SITE_LOCALE = "en_US";
 
+export const SITE_LOGO = "/icons/icon-192.png";
+
 export const SITE_KEYWORDS = [
   "Ajay Goswami",
   "Front-End Developer",

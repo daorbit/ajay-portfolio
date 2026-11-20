@@ -2,7 +2,6 @@ import { BLOG_DESCRIPTION, BLOG_PATH } from "@/constants/cms";
 import { SITE_URL } from "@/constants/site";
 import { PROFILE, STACK } from "@/data/profile";
 import { PROJECTS } from "@/data/projects";
-import { SOCIAL_LINKS } from "@/data/social";
 import { absoluteUrl } from "@/lib/seo";
 import { postHref } from "@/lib/blog";
 import type { Post, PostMeta } from "@/types/blog";
@@ -25,7 +24,8 @@ export function personSchema() {
     url: SITE_URL,
     image: PROFILE.photo,
     email: `mailto:${PROFILE.email}`,
-    sameAs: SOCIAL_LINKS.map(({ href }) => href),
+    telephone: PROFILE.phone.replace(/\s/g, ""),
+    sameAs: [PROFILE.linkedin],
     knowsAbout: [...STACK, "Front-end development", "Web performance", "Accessibility", "SEO"],
   };
 }

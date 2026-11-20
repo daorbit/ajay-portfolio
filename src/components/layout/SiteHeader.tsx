@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 import HeaderNav from "@/components/layout/HeaderNav";
 import MenuToggle from "@/components/layout/MenuToggle";
 import ThemeToggle from "@/components/theme/ThemeToggle";
-import Wordmark from "@/components/ui/Wordmark";
+import LogoMark from "@/components/ui/LogoMark";
 
 type SiteHeaderProps = {
   onOpenMenu: () => void;
@@ -22,7 +22,7 @@ export default function SiteHeader({ onOpenMenu }: SiteHeaderProps) {
       )}
     >
       <div className="page-width flex h-nav items-center justify-between gap-6">
-        <Wordmark />
+        <LogoMark />
         <div className="flex items-center gap-5 md:gap-7 lg:gap-10">
           <div className="hidden md:block">
             <HeaderNav />

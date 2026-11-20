@@ -6,6 +6,6 @@ export const HERO_LAPTOP: Screenshot = {
 };
 
 export const HERO_PHONES: [Screenshot, Screenshot] = [
-  { src: "/projects/lots-of-trips-mobile.webp", alt: "Lots of Trips website on an iPhone" },
-  { src: "/projects/future-music-mobile.webp", alt: "Future Music Academy website on an iPhone" },
+  { src: "/projects/lots-of-trips-phone.webp", alt: "Lots of Trips website on an iPhone" },
+  { src: "/projects/future-music-phone.webp", alt: "Future Music Academy website on an iPhone" },
 ];

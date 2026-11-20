@@ -1,12 +1,11 @@
 import { ArrowRight } from "lucide-react";
-import { PROFILE } from "@/data/profile";
+import { GREETING, PROFILE } from "@/data/profile";
 import Avatar from "@/components/layout/Avatar";
 import AnimatedHeadline from "@/components/motion/AnimatedHeadline";
 import FadeIn from "@/components/motion/FadeIn";
 import HeroFoot from "@/components/sections/hero/HeroFoot";
 import HeroMeta from "@/components/sections/hero/HeroMeta";
 import ButtonLink from "@/components/ui/ButtonLink";
-import IndexLabel from "@/components/ui/IndexLabel";
 import StatusDot from "@/components/ui/StatusDot";
 
 export default function Hero() {
@@ -17,7 +16,7 @@ export default function Hero() {
         <div className="grid items-end gap-10 pt-12 pb-14 md:pt-16 md:pb-20 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
           <div>
             <FadeIn delay={0.1}>
-              <IndexLabel className="mb-7">Index / 01</IndexLabel>
+              <p className="type-serif-sm mb-5 text-earth italic md:mb-7">{GREETING}</p>
             </FadeIn>
             <AnimatedHeadline
               as="h1"

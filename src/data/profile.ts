@@ -5,6 +5,8 @@ export const PROFILE: Profile = {
   initials: "AG",
   role: "Front-End Developer",
   email: "goswamiajay526@gmail.com",
+  phone: "+91 70820 72347",
+  linkedin: "https://www.linkedin.com/in/ajay-goswami-7200bb242/",
   github: "ajjjugoswami",
   githubAccounts: ["ajjjugoswami", "daorbit"],
   photo: "https://avatars.githubusercontent.com/u/114179076",
@@ -13,6 +15,8 @@ export const PROFILE: Profile = {
 };
 
 export const AVAILABILITY = "Open to new roles";
+
+export const GREETING = "Hi, I'm Ajay";
 
 export const STACK = ["React", "Next.js", "TypeScript"];
 

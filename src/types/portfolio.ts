@@ -3,6 +3,8 @@ export type Profile = {
   initials: string;
   role: string;
   email: string;
+  phone: string;
+  linkedin: string;
   github: string;
   githubAccounts: string[];
   summary: string;

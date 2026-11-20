@@ -38,13 +38,13 @@ export default function PostRow({ post, index, headingLevel: Heading = "h2" }: P
           </span>
         </div>
         {image.url ? (
-          <div className="relative order-first aspect-16/10 overflow-hidden rounded-panel bg-canvas-raised md:order-none">
+          <div className="relative order-first aspect-[40/21] self-start overflow-hidden rounded-panel bg-canvas-raised md:order-none">
             <Image
               src={image.url}
               alt={image.alt || title}
               fill
               sizes="(min-width: 1069px) 288px, (min-width: 735px) 224px, 100vw"
-              className="object-cover transition-transform duration-1000 ease-expo group-hover:scale-[1.04]"
+              className="object-cover transition-opacity duration-500 ease-apple group-hover:opacity-85"
             />
           </div>
         ) : (
