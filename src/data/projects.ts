@@ -41,6 +41,17 @@ export const PROJECTS: Project[] = [
     image: "/projects/qr-studio.webp",
   },
   {
+    name: "Pexlora",
+    category: "SaaS",
+    description:
+      "Free file tools that strip AI tags, GPS and EXIF from photos, PDFs and documents, plus image converters, compressors, PDF tools and Orbit AI, mostly running in the browser.",
+    tech: ["Next.js", "TypeScript", "MongoDB"],
+    group: "products",
+    layout: "featured",
+    url: "https://pexlora.daorbit.in",
+    image: "/projects/pexlora.webp",
+  },
+  {
     name: "Da Text Editor",
     category: "npm package",
     description: "A rich-text editor component for React, published on npm as da-text-editor.",
