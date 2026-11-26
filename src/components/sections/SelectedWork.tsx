@@ -7,6 +7,8 @@ import ProjectEntry from "@/components/work/ProjectEntry";
 
 const HOME_PROJECT_COUNT = 4;
 
+const HOME_PROJECTS = PROJECTS.filter(({ hideOnHome }) => !hideOnHome).slice(0, HOME_PROJECT_COUNT);
+
 export default function SelectedWork() {
   return (
     <Section
@@ -17,7 +19,7 @@ export default function SelectedWork() {
       intro="Products, open-source packages and websites, shipped to production and used every day."
     >
       <div className="flex flex-col gap-20 md:gap-28">
-        {PROJECTS.slice(0, HOME_PROJECT_COUNT).map((project, index) => (
+        {HOME_PROJECTS.map((project, index) => (
           <ProjectEntry key={project.name} project={project} index={index + 1} />
         ))}
       </div>

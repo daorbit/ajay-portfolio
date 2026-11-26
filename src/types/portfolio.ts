@@ -43,6 +43,7 @@ export type Project = {
   image: string;
   tech?: string[];
   url?: string;
+  hideOnHome?: boolean;
 };
 
 export type Feature = {

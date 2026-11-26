@@ -1,16 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { NAV_LINKS, isActivePath } from "@/constants/navigation";
+import { isActivePath, type NavLink } from "@/constants/navigation";
 import { cn } from "@/lib/cn";
 import WithPathname from "@/components/layout/WithPathname";
 
-const HEADER_LINKS = NAV_LINKS.filter(({ href }) => href !== "/");
+type HeaderNavProps = {
+  links: NavLink[];
+  label: string;
+};
 
-function HeaderNavList({ pathname }: { pathname: string | null }) {
+function HeaderNavList({ links, pathname }: { links: NavLink[]; pathname: string | null }) {
   return (
     <ul className="flex items-center gap-6 lg:gap-9">
-      {HEADER_LINKS.map(({ label, href }) => {
+      {links.map(({ label, href }) => {
         const active = isActivePath(pathname, href);
         return (
           <li key={href}>
@@ -18,15 +21,15 @@ function HeaderNavList({ pathname }: { pathname: string | null }) {
               href={href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "type-label relative block py-2 whitespace-nowrap transition-colors duration-300",
+                "group type-label relative block py-2 whitespace-nowrap transition-colors duration-300",
                 active ? "text-label" : "text-label-secondary hover:text-label",
               )}
             >
               <span
                 aria-hidden
                 className={cn(
-                  "absolute top-1/2 -left-3 size-1.5 -translate-y-1/2 rounded-full bg-accent transition-transform duration-300",
-                  !active && "scale-0",
+                  "absolute inset-x-0 bottom-0 h-0.5 origin-left bg-accent transition-transform duration-300",
+                  !active && "scale-x-0 group-hover:scale-x-100",
                 )}
               />
               {label}
@@ -38,10 +41,10 @@ function HeaderNavList({ pathname }: { pathname: string | null }) {
   );
 }
 
-export default function HeaderNav() {
+export default function HeaderNav({ links, label }: HeaderNavProps) {
   return (
-    <nav aria-label="Primary">
-      <WithPathname render={(pathname) => <HeaderNavList pathname={pathname} />} />
+    <nav aria-label={label}>
+      <WithPathname render={(pathname) => <HeaderNavList links={links} pathname={pathname} />} />
     </nav>
   );
 }

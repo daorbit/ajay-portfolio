@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     group: "products",
     layout: "featured",
     url: "https://quantalog.daorbit.in",
-    image: "/projects/quantalog.webp",
+    image: "/projects/quantalog-light.webp",
   },
   {
     name: "QR Studio",
@@ -39,6 +39,7 @@ export const PROJECTS: Project[] = [
     layout: "featured",
     url: "https://qr.daorbit.in",
     image: "/projects/qr-studio.webp",
+    hideOnHome: true,
   },
   {
     name: "Pexlora",
@@ -59,7 +60,7 @@ export const PROJECTS: Project[] = [
     group: "tools",
     layout: "standard",
     url: "https://da-text-editor.daorbit.in",
-    image: "/projects/da-text-editor.webp",
+    image: "/projects/da-text-editor-light.webp",
   },
   {
     name: "Da Frame Set",

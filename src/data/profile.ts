@@ -16,11 +16,9 @@ export const PROFILE: Profile = {
 
 export const AVAILABILITY = "Open to new roles";
 
-export const GREETING = "Hi, I'm Ajay";
+export const HERO_TAGLINE = "Interfaces built with intent & craft.";
 
 export const STACK = ["React", "Next.js", "TypeScript"];
-
-export const DISCIPLINES = ["Frontend", "UI engineering", "Performance", "SEO"];
 
 export const HIGHLIGHTS: Highlight[] = [
   { value: 3, label: "Years building production web apps" },

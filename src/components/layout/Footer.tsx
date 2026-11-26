@@ -29,7 +29,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <p className="type-label text-label-tertiary">Say hello</p>
             <ContactLinks className="mt-3" />
           </div>

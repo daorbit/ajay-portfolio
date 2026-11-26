@@ -13,7 +13,9 @@ export default function Contact() {
       <div className="page-width">
         <Reveal className="flex items-center justify-between gap-6 border-b border-hairline pb-5">
           <IndexLabel>Index / Contact</IndexLabel>
-          <StatusDot className="hidden md:inline-flex" />
+          <span className="hidden md:block">
+            <StatusDot />
+          </span>
         </Reveal>
         <AnimatedHeadline
           as="h1"

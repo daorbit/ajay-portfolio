@@ -18,7 +18,9 @@ export default function ContactCta({ index }: ContactCtaProps) {
       <div className="page-width">
         <Reveal className="flex items-center justify-between gap-6 border-b border-hairline pb-5">
           <IndexLabel>{index} / Contact</IndexLabel>
-          <StatusDot className="hidden md:inline-flex" />
+          <span className="hidden md:block">
+            <StatusDot />
+          </span>
         </Reveal>
         <AnimatedHeadline
           className="type-poster-xl mt-12 md:mt-16"

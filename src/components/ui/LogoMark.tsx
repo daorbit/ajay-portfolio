@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SITE_LOGO } from "@/constants/site";
+import { SITE_LOGO_ACCENT } from "@/constants/site";
 import { PROFILE } from "@/data/profile";
 import { cn } from "@/lib/cn";
 
@@ -15,9 +15,13 @@ export default function LogoMark({ onNavigate, className }: LogoMarkProps) {
       href="/"
       onClick={onNavigate}
       aria-label={`${PROFILE.name}, home`}
-      className={cn("block shrink-0 transition-opacity duration-300 hover:opacity-80", className)}
+      className={cn("relative block size-13 shrink-0 transition-opacity duration-300 hover:opacity-80", className)}
     >
-      <Image src={SITE_LOGO} alt="" width={40} height={40} preload className="size-10" />
+      <span
+        aria-hidden
+        className="absolute inset-0 bg-label mask-[url(/icons/logo-mark-shape.png)] mask-contain mask-center mask-no-repeat"
+      />
+      <Image src={SITE_LOGO_ACCENT} alt="" width={52} height={52} preload className="relative size-13" />
     </Link>
   );
 }

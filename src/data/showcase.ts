@@ -1,7 +1,7 @@
 import type { Screenshot } from "@/types/portfolio";
 
 export const HERO_LAPTOP: Screenshot = {
-  src: "/projects/quantalog-hero.webp",
+  src: "/projects/quantalog-hero-light.webp",
   alt: "Quantalog analytics landing page on a MacBook Pro",
 };
 

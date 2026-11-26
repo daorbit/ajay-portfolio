@@ -1,5 +1,6 @@
 "use client";
 
+import { HEADER_LINKS_END, HEADER_LINKS_START } from "@/constants/navigation";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/cn";
 import HeaderNav from "@/components/layout/HeaderNav";
@@ -21,11 +22,14 @@ export default function SiteHeader({ onOpenMenu }: SiteHeaderProps) {
         scrolled ? "border-hairline bg-nav backdrop-blur-xl backdrop-saturate-150" : "border-transparent",
       )}
     >
-      <div className="page-width flex h-nav items-center justify-between gap-6">
+      <div className="page-width grid h-nav grid-cols-[minmax(0,1fr)_auto] items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+        <div className="hidden md:block">
+          <HeaderNav links={HEADER_LINKS_START} label="Primary" />
+        </div>
         <LogoMark />
-        <div className="flex items-center gap-5 md:gap-7 lg:gap-10">
+        <div className="flex items-center justify-end gap-5 md:gap-7 lg:gap-10">
           <div className="hidden md:block">
-            <HeaderNav />
+            <HeaderNav links={HEADER_LINKS_END} label="Secondary" />
           </div>
           <span aria-hidden className="hidden h-4 w-px bg-hairline-strong md:block" />
           <ThemeToggle compact />

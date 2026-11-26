@@ -18,8 +18,8 @@ export default function Home() {
     <>
       <JsonLd data={graph(websiteSchema(), personSchema())} />
       <Hero />
-      <Showreel />
       <TechMarquee />
+      <Showreel />
       <Philosophy />
       <SelectedWork />
       <Expertise index="04" />
